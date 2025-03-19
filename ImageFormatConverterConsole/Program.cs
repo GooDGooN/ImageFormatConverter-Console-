@@ -5,11 +5,11 @@ public class Program
     private static List<string> fileDirectorys = new();
     public static void Main(params string[] args)
     {
-        int currentPage = 1;
-        int formatIndex = 0;
+        var currentPage = 1;
+        var formatIndex = 0;
         List<string> files = args.ToList();
 
-        if(args == null || args.Length == 0)
+        if (args == null || args.Length == 0)
         {
             Console.WriteLine("There is no file, Please Drag and Drop the files or folder to Console.exe");
             Console.WriteLine("Press any key to close");
@@ -17,7 +17,7 @@ public class Program
             return;
         }
         
-        for(int i = 0; i < files.Count; i++)
+        for (int i = 0; i < files.Count; i++)
         {
             if (Directory.Exists(files[i]))
             {
@@ -35,6 +35,7 @@ public class Program
                 fileDirectorys.Add(file);
             }
         }
+
         while (true) 
         {
             Console.Clear();
@@ -56,7 +57,7 @@ public class Program
             var maxIndex = Enum.GetNames<TargetImageFormat>().Length - 1;
             formatIndex = Math.Clamp(formatIndex, 0, maxIndex);
 
-            if(input.Key == ConsoleKey.Spacebar)
+            if (input.Key == ConsoleKey.Spacebar)
             {
                 ImageManager.ExportFiles(fileDirectorys, (TargetImageFormat)formatIndex);
 
@@ -65,6 +66,7 @@ public class Program
                 Console.ReadKey();
                 return;
             }
+
         }
     }
 }   

@@ -31,12 +31,13 @@ public class ImageManager
     {
         try
         {
-            using(var image = Image.FromFile(directory))
+            using (var image = Image.FromFile(directory))
             {
                 if (image != null)
                 {
                     return true;
                 }
+
                 return false;
             }
         }
@@ -53,8 +54,8 @@ public class ImageManager
         {
             Directory.CreateDirectory(folderDiretory);
         }
-        var formatStr = targetFormat.ToString();
 
+        var formatStr = targetFormat.ToString();
         var dupCount = 0;
         var createdCount = 0;
 
@@ -62,6 +63,7 @@ public class ImageManager
         {
             var fileName = Path.Combine(folderDiretory, Path.GetFileName(file));
             fileName = Path.ChangeExtension(fileName, formatStr);
+
             try
             {
                 using (var target = Image.FromFile(file))
@@ -84,10 +86,11 @@ public class ImageManager
             }
         }
 
-        if(dupCount > 0)
+        if (dupCount > 0)
         {
             Console.WriteLine($"\nignored {dupCount} file because overlap");
         }
+
         Console.WriteLine($"Successfully exported {createdCount} Files!");
     }
 }

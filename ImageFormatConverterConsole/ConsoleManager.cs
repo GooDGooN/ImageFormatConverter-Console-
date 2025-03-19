@@ -11,16 +11,19 @@ public class ConsoleManager
 
     public static void DrawList(List<string> list,int pageNumber)
     {
-        for(int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++)
         {
             var listIndex = i + ((pageNumber - 1) * 10);
-            if(listIndex >= list.Count)
+
+            if (listIndex >= list.Count)
             {
                 Console.WriteLine("");
                 continue;
             }
+
             Console.WriteLine($"{list[listIndex]}");
         }
+
         Console.WriteLine($"Current Page [{pageNumber}/{(int)Math.Ceiling(list.Count / 10.0f)}]\n");
     }
 
@@ -28,6 +31,7 @@ public class ConsoleManager
     {
         var names = Enum.GetNames<TargetImageFormat>();
         Console.WriteLine("SELECT FORMAT FOR EXPORT");
+
         for (int i = 0; i < names.Length; i++)
         {
             if (index == i)
@@ -35,8 +39,10 @@ public class ConsoleManager
                 Console.WriteLine($"▶{names[i]}");
                 continue;
             }
+
             Console.WriteLine($"  {names[i]}");
         }
+
         Console.WriteLine("");
     }
 }
